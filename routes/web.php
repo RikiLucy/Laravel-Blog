@@ -13,14 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () { //index
 
     return view('index', [
         'article' => Article::getArticles()
     ]);
 
-});
-Route::get('/{title}', function ($title) {
+})->name('index');
+
+Route::get('/{title}', function ($title) { //article
 
     return view('article', [
         'article' => Article::getArticlesByTitle($title),
@@ -28,17 +29,22 @@ Route::get('/{title}', function ($title) {
     ]);
 
 });
-Route::post('/{title}', function (Request $request, $title) {
+Route::post('/{title}', function (Request $request, $title) { //comments
 
-
+    date_default_timezone_set('GMT');
+    $date = date("F j, Y, g:i a");
     $comment = new Comment();
-    $comment->text = $request->text;
-
+    $comment->text = strip_tags(nl2br($request->text), '<br /><br/><br>');
+    $comment->date = $date;
     $comment->author = $request->author;
-    $comment->id_article = 2;
+    $comment->id_article = $title;
     $comment->save();
-    $response = ['text' => $request->text,
-        'author' => $request->author];
+    $response = [
+        'text' => strip_tags(nl2br($request->text), '<br /><br/><br>'),
+        'author' => $request->author,
+        'date' => $date
+    ];
+
 
 
 
