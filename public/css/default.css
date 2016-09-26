@@ -289,7 +289,7 @@ hr { border: solid #E8E8E8; border-width: 1px 0 0; clear: both; margin: 11px 0 3
 a, a:visited {
    text-decoration: none;
    outline: 0;
-   color: #93B876;
+
    
    -webkit-transition: color .3s ease-in-out;
    -moz-transition: color .3s ease-in-out;
@@ -471,7 +471,7 @@ input[type="button"] {
    color: #fff;
    display: inline-block;   
 	text-decoration: none;
-   padding: 12px 20px;
+   padding: 5px 20px;
 	margin-bottom: 18px;
    border: none;
    cursor: pointer;
@@ -532,20 +532,20 @@ textarea,
 select {
    display: block;
    padding: 12px 15px;
-   margin: 0 0 24px 0;
+   margin: 0 0 0 0;
    border: 0;
    outline: none;
    vertical-align: middle;
    /* min-width: 225px; */
 	max-width: 100%;
    
-	background: #E9EBEE;
-	color: #B1B1B1;
+	background: #DBF5F3;
+	color: #162221;
 
 	font-family: 'opensans-regular', sans-serif;
-	font-size: 14px;
+	font-size: 17px;
    line-height: 30px;
-   height: 54px;
+   height: 35px;
    border-radius: 3px;
 }
 textarea {
@@ -556,13 +556,7 @@ textarea {
    width: 220px;
    } */
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-	background: #AFB7BE;
-	color: #fff;
-}
+
 
 label,
 legend {

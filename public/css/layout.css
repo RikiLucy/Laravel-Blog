@@ -22,7 +22,7 @@
 
 body { 
 	background: #F6F5F5;
-	border-top: 6px solid #9FCC7F; 
+
 }
 .page { 
 	padding-bottom: 18px;
@@ -49,9 +49,9 @@ header {
    background: #fff;    
 }
 header .header-content {
-	background: #fff url(img/header-content-bg.png) no-repeat right top;
+
 	height: 288px;
-	border-bottom: 1px dashed #E8E8E8;
+	border-bottom: 1px dashed #ff4081;
 	position: relative;	
 }
 /* For high-res devices */
@@ -80,7 +80,7 @@ header h1#logo-text a {
 	padding: 0;
 	font: normal 75px Georgia, Serif;
 	letter-spacing: -5px;
-	color: #93b876;
+
 	text-decoration: none;
 }
 header p#intro {	
@@ -715,6 +715,9 @@ footer .copyright {
  	border-radius: 3px;
 }
 #go-top a:hover { background: #7BA857; }
+.sendComment{
+    display: none;
+}
 
 
 
