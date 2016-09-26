@@ -73,7 +73,54 @@
 			$("#go-top").fadeOut(fadeOutTime);
 		}
 
-	});  
+	});
+	var countComment = $('.commentCount').length;
+	//$('.commentCount').attr();
+	$('#contactForm').submit(function () { //ajax send comment
+		var formData =$(this).serialize();
+		var url = $('#contactForm').attr('action');
+
+		$.post( url, formData, processData);
+		function processData(data) {
+
+			var newComment =
+				'<li class="depth-1">' +
+				'<div class="avatar">' +
+				'<img width="50" height="50" class="avatar" src="images/user-01.png" alt="">' +
+				'</div>' +
+				'<div class="comment-content">' +
+				'<div class="comment-info">' +
+				'<cite>' + data.author +'</cite>' +
+				'<div class="comment-meta">' +
+				'<time class="comment-time" ' +
+				'>' + data.date +'</time>' +
+				'<span class="sep">/</span>' +
+				'<a class="reply" href="#">Reply</a>' +
+				'</div></div>' +
+				'<div class="comment-text" id="test"><p>' +
+				data.text + '</p></div></div>' +
+				'</li>';
+
+			$('#successMessage').append(newComment);
+			$('.showComment').attr('value', '');
+			$('#cMessage').attr('value', '');
+			$('.sendComment').hide(300);
+			$('.showComment').attr('placeholder', 'Оставить комментарий');
+
+
+			console.log("SOSI HUY");
+
+
+		}
+		return false;
+	});
+	$('.showComment').click(function () {
+		$('.sendComment').slideDown(300);
+		$('.showComment').attr('placeholder', 'Nickname');
+		$('.your_message').focus();
+		$('.your_message').removeClass('your_message');
+
+	});
 
 
 })(jQuery);
