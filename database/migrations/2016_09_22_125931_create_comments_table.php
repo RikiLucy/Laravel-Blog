@@ -11,7 +11,7 @@ class CreateCommentsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() // надо изменить структуру
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
