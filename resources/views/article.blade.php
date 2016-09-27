@@ -33,7 +33,7 @@
     ================================================== -->
             <div id="comments">
 
-               <h3 class="commentCount" content="123"> Comments</h3>
+               <h3 class="commentCount" > Comments</h3>
 
                <!-- commentlist -->
                <ol class="commentlist" id="successMessage">

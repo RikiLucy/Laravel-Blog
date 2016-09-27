@@ -74,8 +74,8 @@
 		}
 
 	});
-	var countComment = $('.commentCount').length;
-	//$('.commentCount').attr();
+	var countComment = $('.comment').length;
+	$('.commentCount').html(countComment + ' Comments');
 	$('#contactForm').submit(function () { //ajax send comment
 		var formData =$(this).serialize();
 		var url = $('#contactForm').attr('action');
@@ -84,7 +84,7 @@
 		function processData(data) {
 
 			var newComment =
-				'<li class="depth-1">' +
+				'<li class="comment">' +
 				'<div class="avatar">' +
 				'<img width="50" height="50" class="avatar" src="images/user-01.png" alt="">' +
 				'</div>' +
@@ -102,6 +102,8 @@
 				'</li>';
 
 			$('#successMessage').append(newComment);
+			var countComment = $('.comment').length;
+			$('.commentCount').html(countComment + ' Comments');
 			$('.showComment').attr('value', '');
 			$('#cMessage').attr('value', '');
 			$('.sendComment').hide(300);
