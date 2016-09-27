@@ -76,7 +76,7 @@
 	});
 	var countComment = $('.comment').length;
 	$('.commentCount').html(countComment + ' Comments');
-	$('#contactForm').submit(function () { //ajax send comment
+	$('#contactForm').submit(function () { //ajax send comment 
 		var formData =$(this).serialize();
 		var url = $('#contactForm').attr('action');
 
