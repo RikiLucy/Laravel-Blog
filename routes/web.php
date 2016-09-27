@@ -29,7 +29,7 @@ Route::get('/{title}', function ($title) { //article
     ]);
 
 });
-Route::post('/{title}', function (Request $request, $title) { //comments
+Route::post('/{title}', function (Request $request, $title) { // роут для ответа на аякс
 
     date_default_timezone_set('GMT');
     $date = date("F j, Y, g:i a");
