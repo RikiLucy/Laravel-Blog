@@ -74,9 +74,9 @@
 		}
 
 	});
-	var countComment = $('.comment').length;
+	var countComment = $('.comment').length; // подсчет комментариев
 	$('.commentCount').html(countComment + ' Comments');
-	$('#contactForm').submit(function () { //ajax send comment 
+	$('#contactForm').submit(function () { //ajax send comment
 		var formData =$(this).serialize();
 		var url = $('#contactForm').attr('action');
 
