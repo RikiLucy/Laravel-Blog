@@ -44,7 +44,7 @@ Route::post('/{title}', function (Request $request, $title) { //comments
         'author' => $request->author,
         'date' => $date
     ];
-//
+
 
 
 
