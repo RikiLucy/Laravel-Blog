@@ -80,7 +80,7 @@
 		var formData =$(this).serialize();
 		var url = $('#contactForm').attr('action');
 
-		$.post( url, formData, processData);
+	console.log($.post( url, formData, processData));
 		function processData(data) {
 
 			var newComment =
@@ -123,6 +123,61 @@
 		$('.your_message').removeClass('your_message');
 
 	});
+
+	//admin
+	$('.name_article').click(function () {
+		$('.body_article').slideDown(300);
+		//$('.showComment').attr('placeholder', 'Nickname');
+		//$('.your_message').focus();
+		//$('.your_message').removeClass('your_message');
+
+	});
+
+	$('.hide').click(function () {
+		$('.body_article').slideUp(300);
+	});
+
+	$('.articles_table').on('click', '.delete_article', function(){
+		var id_article = ($($(this).parent('tr')).attr("id_article")); //айди нужной статьи
+		var token = $('.token input').attr('value');
+		var data = { id: id_article, _token: token};
+		var url = $('.table_article').attr('action');
+		console.log(id_article);
+		console.log(url);
+		//console.log($.post( url, data, processData));
+		$.post( url, data, processData);
+		function processData(data) {
+			$('tr[id_article=' + id_article + ']').fadeOut(300);
+			console.log(data);
+		}
+		return false;
+	});
+
+
+	$('.add_article').submit(function () { //ajax send article
+		var formData =$(this).serialize();
+		var url = $('.add_article').attr('action');
+		console.log($.post( url, formData, processData));
+		//$.post( url, formData, processData);
+		function processData(data) {
+			var newArticle = '' +
+				'<tr id_article="' + data.id + '">' +
+				'<td >' + data.id + '</td>' +
+				'<td>' + data.title + '</td>' +
+				'<td>' + data.date + '</td>' +
+				'<td>' + data.author + '</td>' +
+				'<td>' + data.tags + '</td>' +
+				'<td>Редактировать</td>' +
+				'<td class="delete_article">Удалить</td>' +
+				'<td>Комментарии</td></tr>';
+			$('.articles_table').append(newArticle);
+
+		}
+		return false;
+	});
+
+
+
 
 
 })(jQuery);
