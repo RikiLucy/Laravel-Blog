@@ -21,6 +21,49 @@ Route::get('/', function () { //index
 
 })->name('index');
 
+Route::get('/admin', function (){
+    return view('admin', [
+        'article' => Article::all(),
+        'comment' => Comment::all()
+    ]);
+})->name('admin');
+
+
+
+Route::post('/admin/delete', function (Request $request) {
+    $id_article = $request->id;
+    $article = Article::find($id_article);
+    $article->delete();
+    $response = [ 'id' => $request->id];
+    echo 123;
+    //return redirect('/');
+    return Response::json($response);
+
+
+})->name('delete');
+
+Route::post('/admin/add', function (Request $request) {
+    $post = new Article();
+    $post->title = $request->title;
+    $post->text = $request->text;
+    $post->date = $request->date;
+    $post->author = $request->author;
+    $post->tags = $request->tags;
+    $post->save();
+    $response = [
+        'id' => $post->id,
+        'title' => $request->title,
+        'date' => $request->date,
+        'author' => $request->author,
+        'tags' => $request->tags
+    ];
+    return Response::json($response);
+
+})->name('add');
+
+
+
+
 Route::get('/{title}', function ($title) { //article
 
     return view('article', [
@@ -44,14 +87,10 @@ Route::post('/{title}', function (Request $request, $title) { // роут для
         'author' => $request->author,
         'date' => $date
     ];
-//
-
-
-
     return Response::json( $response );
     //return redirect('/{title}');
 });
 
-Route::get('/admin', function (){
+
 // сделать авторизацию для админа
-});
+
