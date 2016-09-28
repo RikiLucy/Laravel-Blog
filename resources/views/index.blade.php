@@ -25,7 +25,7 @@
 
 
 				<div class="entry-content">
-					<p>{{$articles->text}}
+					<p>{!! $articles->text!!}
 					</p>
 				</div>
 				@endforeach
