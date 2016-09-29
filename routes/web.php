@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
 | to using a Closure or controller method. Build something great!
 |
 */
+//todo
+//изменить таблицы(для коментов айди для hasMany)
+//реализовать категории
+//поудалать лишние классы в html
+//перенести функционал из роутов в контроллеры
+//реализовать авторизацию для админа
+
 
 Route::get('/', function () { //index
 
