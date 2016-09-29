@@ -125,8 +125,10 @@
 	});
 
 	//admin
+
 	$('.name_article').click(function () {
 		$('.body_article').slideDown(300);
+
 		//$('.showComment').attr('placeholder', 'Nickname');
 		//$('.your_message').focus();
 		//$('.your_message').removeClass('your_message');
@@ -155,7 +157,9 @@
 
 
 	$('.add_article').submit(function () { //ajax send article
+		$('#editor1').html(tinyMCE.get('editor1').getContent());
 		var formData =$(this).serialize();
+		//var data = tinyMCE.get('editor1').getContent();
 		var url = $('.add_article').attr('action');
 		console.log($.post( url, formData, processData));
 		//$.post( url, formData, processData);
@@ -175,6 +179,7 @@
 		}
 		return false;
 	});
+
 
 
 

@@ -2,7 +2,12 @@
 @section('content')
 <!-- Content
 ================================================== -->
-<script src="//cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({
+		selector: 'textarea',  // change this value according to your HTML
+		plugins : 'advlist autolink link image lists charmap print preview'
+	});</script>
+
 <style>
 	#sidebar{
 		display: none;
@@ -20,7 +25,8 @@
 			<div class="body_article">
 
 			<div class="text_article">
-				<textarea name="text" id="editor1" cols="30" rows="10"></textarea>
+				<textarea id="editor1" name="text" cols="50" rows="10"></textarea>
+
 			</div>
 			<br>
 
@@ -38,19 +44,17 @@
 				<input type="text" placeholder="Теги/категория" name="tags">
 			</div>
 			<br>
+				<script>
+
+
+				</script>
 
 			<button type="submit" class="submit">Send</button>
 				<div class="hide">Hide</div>
 
 			</div>
 
-			<script>
 
-				CKEDITOR.replace( 'editor1', {
-					language: 'Russian',
-					uiColor: '#F9F9F9'
-				});
-			</script>
 	</form> <!-- Form End -->
 
 

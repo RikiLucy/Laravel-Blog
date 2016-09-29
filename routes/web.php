@@ -44,8 +44,9 @@ Route::post('/admin/delete', function (Request $request) {
 
 Route::post('/admin/add', function (Request $request) {
     $post = new Article();
-    $post->title = $request->title;
     $post->text = $request->text;
+    $post->title = $request->title;
+
     $post->date = $request->date;
     $post->author = $request->author;
     $post->tags = $request->tags;
