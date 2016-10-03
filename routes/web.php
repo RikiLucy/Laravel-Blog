@@ -79,7 +79,7 @@ Route::get('/{title}', function ($title) { //article
 
     return view('article', [
         'article' => Article::getArticlesByTitle($title),
-        'comment' => Comment::getComments($title)
+        'comment' => Article::getArticlesByTitle($title)->comments
     ]);
 
 });
@@ -91,7 +91,7 @@ Route::post('/{title}', function (Request $request, $title) { // роут для
     $comment->text = strip_tags(nl2br($request->text), '<br /><br/><br>');
     $comment->date = $date;
     $comment->author = $request->author;
-    $comment->id_article = $title;
+    $comment->article_id = $title;
     $comment->save();
     $response = [
         'text' => strip_tags(nl2br($request->text), '<br /><br/><br>'),

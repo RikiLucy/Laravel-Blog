@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Article extends Model
 {
     //модель для статьи
@@ -16,6 +17,10 @@ class Article extends Model
         $article = Article::findOrFail($title);
         //$article = Article::where('title', '=', $title)->firstOrFail();
         return $article;
+
+    }
+    public function Comments(){
+        return $this->hasMany('App\Comment');
 
     }
 }
