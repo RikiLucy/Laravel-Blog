@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('text')->nullable();
             $table->string('date')->nullable();
             $table->string('author')->nullable();
-            $table->string('tags')->nullable();
+            $table->string('categories')->nullable();
             $table->timestamps();
         });
     }
