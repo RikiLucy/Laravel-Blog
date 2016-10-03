@@ -73,36 +73,7 @@
 
    @yield('content')
 
-           </div> <!-- end main -->
-           <div id="sidebar" class="four columns">
 
-               <div class="widget widget_search">
-                   <h3>Search</h3>
-                   <form action="#">
-
-                       <input type="text" value="Search here..." onblur="if(this.value == '') { this.value = 'Search here...'; }" onfocus="if (this.value == 'Search here...') { this.value = ''; }" class="text-search">
-                       <input type="submit" value="" class="submit-search">
-
-                   </form>
-               </div>
-
-               <div class="widget widget_categories group">
-                   <h3>Категории.</h3>
-                   <ul>
-                       <li><a href="#" title="">Laravel</a> (2)</li>
-                       <li><a href="#" title="">PHP</a> (14)</li>
-                       <li><a href="#" title="">JavaScript</a> (5)</li>
-
-                   </ul>
-               </div>
-
-
-
-
-
-
-
-           </div> <!-- end sidebar -->
 
        </div> <!-- end row -->
 

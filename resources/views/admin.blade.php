@@ -41,7 +41,7 @@
 			<br>
 			
 			<div class="tags_article" >
-				<input type="text" placeholder="Теги/категория" name="tags">
+				<input type="text" placeholder="Теги/категория" name="categories">
 			</div>
 			<br>
 				<script>
@@ -87,7 +87,7 @@
 		<td>{{$articles->title}}</td>
 		<td>{{$articles->date}}</td>
 		<td>{{$articles->author}}</td>
-		<td>{{$articles->tags}}</td>
+		<td>{{$articles->categories}}</td>
 		<td>Редактировать</td>
 		<td class="delete_article">Удалить</td>
 		<td>Комментарии</td>

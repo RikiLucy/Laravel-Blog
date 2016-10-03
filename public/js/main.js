@@ -170,7 +170,7 @@
 				'<td>' + data.title + '</td>' +
 				'<td>' + data.date + '</td>' +
 				'<td>' + data.author + '</td>' +
-				'<td>' + data.tags + '</td>' +
+				'<td>' + data.categories + '</td>' +
 				'<td>Редактировать</td>' +
 				'<td class="delete_article">Удалить</td>' +
 				'<td>Комментарии</td></tr>';

@@ -1,6 +1,7 @@
 <?php
 use \App\Article;
 use \App\Comment;
+use \App\Id_categorie;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,10 @@ use Illuminate\Http\Request;
 |
 */
 //todo
-//изменить таблицы(для коментов айди для hasMany)
+//изменить таблицы(для коментов айди для hasMany) - DONE
+//организовать маршруты через слеш
 //сделать страницу 404
-//реализовать категории
+//реализовать категории: создать две таблица(с категориями и айди - добавлние есть
 //поудалать лишние классы в html
 //перенести функционал из роутов в контроллеры
 //реализовать авторизацию для админа
@@ -26,10 +28,14 @@ use Illuminate\Http\Request;
 Route::get('/', function () { //index
 
     return view('index', [
-        'article' => Article::getArticles()
+        'article' => Article::getArticles(),
+        'categorie' => Id_categorie::getCategories()
     ]);
 
 })->name('index');
+
+
+
 
 Route::get('/admin', function (){
     return view('admin', [
@@ -56,17 +62,26 @@ Route::post('/admin/add', function (Request $request) {
     $post = new Article();
     $post->text = $request->text;
     $post->title = $request->title;
-
     $post->date = $request->date;
     $post->author = $request->author;
-    $post->tags = $request->tags;
+
+    $id_catigories = \App\Id_categorie::where('name', $request->categories)->first(); // нашел айди категории
+    $post->categories = $id_catigories->id; // добавил найденый айди в таблицу поста
+
     $post->save();
+
+    $categorie = new \App\Categorie();
+    $categorie->article_id = $post->id;
+    $categorie->categorie_id = $id_catigories->id;
+    $categorie->save();
+
+
     $response = [
         'id' => $post->id,
         'title' => $request->title,
         'date' => $request->date,
         'author' => $request->author,
-        'tags' => $request->tags
+        'categories' => $request->categories
     ];
     return Response::json($response);
 
@@ -75,7 +90,7 @@ Route::post('/admin/add', function (Request $request) {
 
 
 
-Route::get('/{title}', function ($title) { //article
+Route::get('{title}', function ($title) { //article
 
     return view('article', [
         'article' => Article::getArticlesByTitle($title),
