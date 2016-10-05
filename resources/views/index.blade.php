@@ -8,14 +8,14 @@
 				<header class="entry-header">
 
 					<h2 class="entry-title">
-						<a href={{$articles->id}} title="">{{$articles->title}}</a>
+						<a href={{URL::route('article', [$articles->id])}} title="">{{$articles->title}}</a>
 					</h2>
 
 					<div class="entry-meta">
 						<ul>
 							<li>{{$articles->date}}</li>
 							<span class="meta-sep">&bull;</span>
-							<li><a href="#" title="" rel="category tag">{{$articles->categories}}</a></li>
+							<li><a href="#" title="" rel="category tag">{{$articles->name}}</a></li>
 							<span class="meta-sep">&bull;</span>
 							<li>{{$articles->author}}</li>
 						</ul>
@@ -48,7 +48,7 @@
 					<h3>Категории.</h3>
 					<ul>
 						@foreach ($categorie as $categories)
-						<li><a href="{{$categories->id}}" title="">{{ $categories->name }}</a></li>
+						<li><a href="{{URL::route('category', [$categories->name])}}" title="">{{ $categories->name }}</a></li>
 						@endforeach
 
 					</ul>

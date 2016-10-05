@@ -1,7 +1,7 @@
 <?php
 use \App\Article;
 use \App\Comment;
-use \App\Id_categorie;
+use \App\Category;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,8 @@ use Illuminate\Http\Request;
 */
 //todo
 //изменить таблицы(для коментов айди для hasMany) - DONE
-//организовать маршруты через слеш
+// перепроектировать БД
+// привести бд в нормальную форму, использовать join
 //сделать страницу 404
 //реализовать категории: создать две таблица(с категориями и айди - добавлние есть
 //поудалать лишние классы в html
@@ -23,18 +24,40 @@ use Illuminate\Http\Request;
 //реализовать авторизацию для админа
 //попробовать использовать клоне в местах с генерацией хтмл кода
 //test commit
+/*{
+    static public function getCategories(){
+        $categories = Id_categorie::orderBy('id', 'desc')->get();
+        return $categories;
+
+    }
+    static public function getArticlesByCategory($name){
+
+        $category_id = Id_categorie::where('name', '=', $name)->firstOrFail(); // сделать через отношения
+        $article = Article::where('categories', '=', $category_id->id)->get();
+        return $article;
+
+    }
+}*/
 
 
 Route::get('/', function () { //index
 
     return view('index', [
         'article' => Article::getArticles(),
-        'categorie' => Id_categorie::getCategories()
+        'categorie' => Category::getCategories() // для сайд бара
     ]);
+    //return Article::getArticles();
 
 })->name('index');
 
+Route::get('/category/{name}', function ($name) { //category
 
+    return view('index', [
+        'article' => Article::getArticlesByCategory($name),
+        'categorie' => Category::getCategories() // для сайд бара
+    ]);
+
+})->name('category');
 
 
 Route::get('/admin', function (){
@@ -65,15 +88,11 @@ Route::post('/admin/add', function (Request $request) {
     $post->date = $request->date;
     $post->author = $request->author;
 
-    $id_catigories = \App\Id_categorie::where('name', $request->categories)->first(); // нашел айди категории
+    $id_catigories = Category::where('name', $request->categories)->first(); // нашел айди категории
     $post->categories = $id_catigories->id; // добавил найденый айди в таблицу поста
 
     $post->save();
 
-    $categorie = new \App\Categorie();
-    $categorie->article_id = $post->id;
-    $categorie->categorie_id = $id_catigories->id;
-    $categorie->save();
 
 
     $response = [
@@ -97,7 +116,7 @@ Route::get('{title}', function ($title) { //article
         'comment' => Article::getArticlesByTitle($title)->comments
     ]);
 
-});
+})->name('article');
 Route::post('/{title}', function (Request $request, $title) { // роут для ответа на аякс
 
     date_default_timezone_set('GMT');
