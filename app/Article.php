@@ -14,7 +14,7 @@ class Article extends Model
         //return $articles;
         $articles = DB::table('articles')
             ->Join('categories', 'articles.categories', '=', 'categories.id')
-            //->select('articles.*', 'articles.categories')
+            ->select('articles.*', 'categories.categories')
             ->get();
         return $articles;
 
@@ -33,7 +33,8 @@ class Article extends Model
     //public function getArticlesByCategory($category){
     static public function getArticlesByCategory($name){
 
-            $category_id = Category::where('name', '=', $name)->firstOrFail(); // сделать через отношения
+
+            $category_id = Category::where('categories', '=', $name)->firstOrFail(); // сделать через отношения
             $article = Article::where('categories', '=', $category_id->id)->orderBy('id', 'desc')->get();
             return $article;
 
