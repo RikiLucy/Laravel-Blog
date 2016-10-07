@@ -14,11 +14,13 @@ use Illuminate\Http\Request;
 |
 */
 //todo
+
+// сделать вывод кол-ва статей из определенной категории(уменьшение при удалиние и + при добавлении)
+// исправить поля формы после добавления
+// сделать в форме ввод категории через список
+// сделать вывод категории не только на главной
 //изменить таблицы(для коментов айди для hasMany) - DONE
-// перепроектировать БД
-// привести бд в нормальную форму, использовать join
 //сделать страницу 404
-//реализовать категории: создать две таблица(с категориями и айди - добавлние есть
 //поудалать лишние классы в html
 //перенести функционал из роутов в контроллеры
 //реализовать авторизацию для админа
@@ -73,6 +75,7 @@ Route::post('/admin/delete', function (Request $request) {
     $id_article = $request->id;
     $article = Article::find($id_article);
     $article->delete();
+
     $response = [ 'id' => $request->id];
     echo 123;
     //return redirect('/');
@@ -87,8 +90,9 @@ Route::post('/admin/add', function (Request $request) {
     $post->title = $request->title;
     $post->date = $request->date;
     $post->author = $request->author;
-
-    $id_catigories = Category::where('name', $request->categories)->first(); // нашел айди категории
+    $id_catigories = Category::where('categories', $request->categories)->first(); // нашел айди категории
+    $id_catigories->count ++;
+    $id_catigories->save();
     $post->categories = $id_catigories->id; // добавил найденый айди в таблицу поста
 
     $post->save();
