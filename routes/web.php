@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 */
 //todo
 
-// сделать вывод кол-ва статей из определенной категории(уменьшение при удалиние и + при добавлении)
+// сделать вывод кол-ва статей из определенной категории(уменьшение при удалиние и + при добавлении) - DONE
 // исправить поля формы после добавления
 // сделать в форме ввод категории через список
 // сделать вывод категории не только на главной
@@ -75,6 +75,10 @@ Route::post('/admin/delete', function (Request $request) {
     $id_article = $request->id;
     $article = Article::find($id_article);
     $article->delete();
+
+    $category = Category::find($article->categories);
+    $category->count --;
+    $category->save();
 
     $response = [ 'id' => $request->id];
     echo 123;
