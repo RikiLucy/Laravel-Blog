@@ -16,9 +16,12 @@ use Illuminate\Http\Request;
 //todo
 
 // сделать вывод кол-ва статей из определенной категории(уменьшение при удалиние и + при добавлении) - DONE
-// исправить поля формы после добавления
-// сделать в форме ввод категории через список
+// исправить поля формы после добавления, пока оставить для более быстрого тестирования
+// баг в форме добавления, текст не меняется
+// сделать в форме ввод категории через список - DONE
 // сделать вывод категории не только на главной
+// сделать одну функцию для гет постов через перегрузку
+// сделать получение токена при удалении функцией(есть в доках $token = csrf_token();)
 //изменить таблицы(для коментов айди для hasMany) - DONE
 //сделать страницу 404
 //поудалать лишние классы в html
@@ -40,7 +43,14 @@ use Illuminate\Http\Request;
 
     }
 }*/
+Route::get('/test/{name}', function ($name) { //category
 
+    //return $name;
+    echo Article::getArticlesByTitle($name);
+    echo '<br>';
+    echo Article::getArticles();
+
+})->name('test');
 
 Route::get('/', function () { //index
 
@@ -65,7 +75,8 @@ Route::get('/category/{name}', function ($name) { //category
 Route::get('/admin', function (){
     return view('admin', [
         'article' => Article::all(),
-        'comment' => Comment::all()
+        'comment' => Comment::all(),
+        'category' => Category::all()
     ]);
 })->name('admin');
 

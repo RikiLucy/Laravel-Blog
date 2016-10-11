@@ -41,7 +41,12 @@
 			<br>
 			
 			<div class="tags_article" >
-				<input type="text" placeholder="Теги/категория" name="categories">
+
+				<select name="categories">
+					@foreach ($category as $categories)
+					<option> {{ $categories->categories }}</option>
+					@endforeach
+				</select>
 			</div>
 			<br>
 				<script>
