@@ -15,6 +15,7 @@ class Article extends Model
         $articles = DB::table('articles')
             ->Join('categories', 'articles.categories', '=', 'categories.id')
             ->select('articles.*', 'categories.categories')
+            ->orderBy('id', 'desc')
             ->get();
         return $articles;
 
