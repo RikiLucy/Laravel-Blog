@@ -132,7 +132,8 @@ Route::get('{title}', function ($title) { //article
 
     return view('article', [
         'article' => Article::getArticlesByTitle($title),
-        'comment' => Article::getArticlesByTitle($title)->comments
+        'comment' => Article::getArticlesByTitle($title)->comments,
+        'category' => Article::getCategoryByTitle($title)
     ]);
 
 })->name('article');

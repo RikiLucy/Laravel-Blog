@@ -28,6 +28,17 @@ class Article extends Model
         return $article;
 
     }
+
+    static public function getCategoryByTitle($title){
+        $article = Article::findOrFail($title);
+        $category = Category::find($article->categories);
+
+        //$category_id = Category::where('categories', '=', $name)->firstOrFail();
+        //$article = Article::where('title', '=', $title)->firstOrFail();
+        return $category;
+
+    }
+
     public function Comments(){
         return $this->hasMany('App\Comment');
 

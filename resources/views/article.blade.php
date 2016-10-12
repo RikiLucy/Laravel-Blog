@@ -15,7 +15,7 @@
 								<ul>
 									<li>{{$article->date}}</li>
 									<span class="meta-sep">&bull;</span>
-									<li><a href="#" title="" rel="category tag">{{$article->tags}}</a></li>
+									<li><a href="#" title="" rel="category tag">{{$category->categories}}</a></li>
 									<span class="meta-sep">&bull;</span>
 									<li>{{$article->author}}</li>
 								</ul>
