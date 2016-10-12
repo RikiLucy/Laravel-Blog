@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 //исправить поля формы после добавления, пока оставить для более быстрого тестирования
 //баг в форме добавления, текст не меняется
 //сделать в форме ввод категории через список - DONE
-//сделать вывод категории не только на главной
+//сделать вывод категории не только на главной - DONE
 //сделать одну функцию для гет постов через перегрузку
 //сделать получение токена при удалении функцией(есть в доках $token = csrf_token();)
 //изменить таблицы(для коментов айди для hasMany) - DONE
@@ -74,7 +74,7 @@ Route::get('/category/{name}', function ($name) { //category
 
 Route::get('/admin', function (){
     return view('admin', [
-        'article' => Article::all(),
+        'article' => Article::getArticles(),
         'comment' => Comment::all(),
         'category' => Category::all()
     ]);
