@@ -56,7 +56,7 @@ Route::get('/', function () { //index
 
     return view('index', [
         'article' => Article::getArticles(),
-        'categorie' => Category::getCategories() // для сайд бара
+        'categorie' => Category::orderBy('id', 'desc')->get() // для сайд бара
     ]);
     //return Article::getArticles();
 
@@ -66,7 +66,7 @@ Route::get('/category/{name}', function ($name) { //category
 
     return view('index', [
         'article' => Article::getArticlesByCategory($name),
-        'categorie' => Category::getCategories() // для сайд бара
+        'categorie' => Category::orderBy('id', 'desc')->get() // для сайд бара
     ]);
 
 })->name('category');
