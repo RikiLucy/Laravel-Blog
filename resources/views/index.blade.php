@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section('content')
+	<div class="row">
+
+		<div id="main" class="nine columns">
 <!-- Content
 ================================================== -->
 			<article class="entry">
@@ -9,6 +12,8 @@
 
 					<h2 class="entry-title">
 						<a href={{URL::route('article', [$articles->id])}} title="">{{$articles->title}}</a>
+						<br>
+
 					</h2>
 
 					<div class="entry-meta">
@@ -21,20 +26,22 @@
 						</ul>
 					</div>
 
+
 				</header>
 
 
 				<div class="entry-content">
-					<p>{!! $articles->text!!}
+					<p>{!! $articles->description!!}
 					</p>
 				</div>
+					<a href={{URL::route('article', [$articles->id])}} title="">[читать полностью]</a>
 				@endforeach
 			</article> <!-- end entry -->
 
 			</div> <!-- end main -->
-			<div id="sidebar" class="four columns">
+			<div id="sidebar" class="three columns">
 
-				<div class="widget widget_search">
+			<!--<div class="widget widget_search search_form">
 					<h3>Search</h3>
 					<form action="#">
 
@@ -42,7 +49,7 @@
 						<input type="submit" value="" class="submit-search">
 
 					</form>
-				</div>
+				</div> -->
 
 				<div class="widget widget_categories group">
 					<h3>Категории.</h3>
@@ -60,6 +67,6 @@
 
 
 
-</div> <!-- end sidebar -->
-
+			</div> <!-- end sidebar -->
+	</div> <!-- end row -->
 @endsection

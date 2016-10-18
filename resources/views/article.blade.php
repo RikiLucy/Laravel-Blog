@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('content')
+	<div class="row">
 
+		<div id="main" class="ten columns">
    <!-- Content
    ================================================== -->
    			<article class="entry">
@@ -95,4 +97,6 @@
                </div> <!-- Respond End -->
 
             </div>  <!-- Comments End -->
+		</div>  <!-- end Main -->
+		</div> <!-- end row -->
 @endsection

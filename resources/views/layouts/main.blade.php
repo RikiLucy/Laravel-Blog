@@ -67,15 +67,13 @@
    ================================================== -->
    <div id="content-wrap">
 
-       <div class="row">
 
-           <div id="main" class="eight columns">
 
    @yield('content')
 
 
 
-       </div> <!-- end row -->
+
 
    </div> <!-- end content-wrap -->
    <!-- Footer

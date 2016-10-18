@@ -15,11 +15,9 @@
 
 //сделать вывод кол-ва статей из определенной категории(уменьшение при удалиние и + при добавлении) - DONE
 //исправить поля формы после добавления, пока оставить для более быстрого тестирования
-//баг в форме добавления, текст не меняется
+//баг в форме добавления, текст не меняется, добавляется только со второго раза, дело в редакторе
 //сделать в форме ввод категории через список - DONE
 //сделать вывод категории не только на главной - DONE
-//сделать одну функцию для гет постов через перегрузку
-//сделать получение токена при удалении функцией(есть в доках $token = csrf_token();)
 //изменить таблицы(для коментов айди для hasMany) - DONE
 //сделать страницу 404
 //поудалать лишние классы в html
@@ -34,7 +32,7 @@ Route::get('/admin', ['uses' => 'AdminController@getIndex', 'as' => 'admin']);
 Route::post('/admin/delete', ['uses' => 'AdminController@postDelete', 'as' => 'delete']);
 Route::post('/admin/add', ['uses' => 'AdminController@postAdd', 'as' => 'add']);
 Route::get('/{title}', [ 'uses' => 'BlogController@getArticle', 'as' => 'article']);
-Route::post('/{title}', 'BlogController@postArticle');
+Route::post('/{title}', [ 'uses' => 'BlogController@postArticle', 'as' => 'addComment']);
 
 
 // сделать авторизацию для админа

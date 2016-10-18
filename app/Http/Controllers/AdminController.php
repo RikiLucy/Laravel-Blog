@@ -37,6 +37,7 @@ class AdminController extends Controller
 
     public function postAdd(Request $request){
         $post = new Article();
+        $post->description = $request->description;
         $post->text = $request->text;
         $post->title = $request->title;
         $post->date = $request->date;

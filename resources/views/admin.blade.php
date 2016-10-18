@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section('content')
+	<div class="row">
+
+		<div id="main" class="ten columns">
 <!-- Content
 ================================================== -->
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
@@ -23,41 +26,44 @@
 			</div>
 			<br>
 			<div class="body_article">
+				<div class="text_article">
+					<textarea id="editor1" name="description" cols="50" rows="10"></textarea>
+				</div>
 
-			<div class="text_article">
-				<textarea id="editor1" name="text" cols="50" rows="10"></textarea>
+				<div class="text_article">
+					<textarea id="editor1" name="text" cols="50" rows="10"></textarea>
 
-			</div>
-			<br>
+				</div>
+				<br>
 
-			<div class="date_article">
-				<input type="date" name="date">
-			</div>
-			<br>
+				<div class="date_article">
+					<input type="date" name="date">
+				</div>
+				<br>
 
-			<div class="author_article">
-				<input type="text" value="RikiLucy" name="author">
-			</div>
-			<br>
-			
-			<div class="tags_article" >
+				<div class="author_article">
+					<input type="text" value="RikiLucy" name="author">
+				</div>
+				<br>
 
-				<select name="categories">
-					@foreach ($category as $categories)
-					<option> {{ $categories->categories }}</option>
-					@endforeach
-				</select>
-			</div>
-			<br>
-				<script>
+				<div class="tags_article" >
+
+					<select name="categories">
+						@foreach ($category as $categories)
+						<option> {{ $categories->categories }}</option>
+						@endforeach
+					</select>
+				</div>
+				<br>
+					<script>
 
 
-				</script>
+					</script>
 
-			<button type="submit" class="submit">Send</button>
-				<div class="hide">Hide</div>
+				<button type="submit" class="submit">Send</button>
+					<div class="hide">Hide</div>
 
-			</div>
+				</div>
 
 
 	</form> <!-- Form End -->
@@ -102,5 +108,6 @@
 </table>
 </form>
 
-
+		</div>  <!-- end Main -->
+	</div> <!-- end row -->
 @endsection
