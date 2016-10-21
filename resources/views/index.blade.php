@@ -20,7 +20,8 @@
 						<ul>
 							<li>{{$articles->date}}</li>
 							<span class="meta-sep">&bull;</span>
-							<li><a href="#" title="" rel="category tag">{{$articles->categories}}</a></li>
+							<li><a href="{{URL::route('category', [$articles->categories])}}" title="">{{ $articles->categories }}</a></li>
+
 							<span class="meta-sep">&bull;</span>
 							<li>{{$articles->author}}</li>
 						</ul>
@@ -35,7 +36,9 @@
 					</p>
 				</div>
 					<a href={{URL::route('article', [$articles->id])}} title="">[читать полностью]</a>
+                    <br><br><br><br>
 				@endforeach
+
 			</article> <!-- end entry -->
 
 			</div> <!-- end main -->

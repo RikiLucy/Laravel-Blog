@@ -26,13 +26,13 @@
 //попробовать использовать клоне в местах с генерацией хтмл кода
 //test commit
 
-Route::get('/', [ 'uses' => 'BlogController@getIndex', 'as' => 'index']);
-Route::get('/category/{name}', ['uses' => 'BlogController@getCategory', 'as' => 'category']);
-Route::get('/admin', ['uses' => 'AdminController@getIndex', 'as' => 'admin']);
-Route::post('/admin/delete', ['uses' => 'AdminController@postDelete', 'as' => 'delete']);
-Route::post('/admin/add', ['uses' => 'AdminController@postAdd', 'as' => 'add']);
-Route::get('/{title}', [ 'uses' => 'BlogController@getArticle', 'as' => 'article']);
-Route::post('/{title}', [ 'uses' => 'BlogController@postArticle', 'as' => 'addComment']);
+Route::get('/', [ 'uses' => 'BlogController@getIndex', 'as' => 'index']); // главная страница
+Route::get('/category/{name}', ['uses' => 'BlogController@getCategory', 'as' => 'category']); // статьи по категориям
+Route::get('/admin', ['uses' => 'AdminController@getIndex', 'as' => 'admin']); // админка
+Route::post('/admin/delete', ['uses' => 'AdminController@postDelete', 'as' => 'delete']); // удалить статью
+Route::post('/admin/add', ['uses' => 'AdminController@postAdd', 'as' => 'add']); // добавить статью
+Route::get('/{title}', [ 'uses' => 'BlogController@getArticle', 'as' => 'article']); // статья
+Route::post('/{title}', [ 'uses' => 'BlogController@postArticle', 'as' => 'addComment']); // добавить комментарий к статье
 
 
 // сделать авторизацию для админа

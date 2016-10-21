@@ -13,17 +13,19 @@
 								<a href={{$article->id}} title="">{{$article->title}}</a>
 							</h2>
 
-							<div class="entry-meta">
+                        <!--<div class="entry-meta">
 								<ul>
 									<li>{{$article->date}}</li>
 									<span class="meta-sep">&bull;</span>
-									<li><a href="#" title="" rel="category tag">{{$category->categories}}</a></li>
+									<li><a href="{{URL::route('category', [$category->categories])}}" title="">{{ $category->categories }}</a></li>
+
 									<span class="meta-sep">&bull;</span>
 									<li>{{$article->author}}</li>
 								</ul>
-							</div>
+							</div>-->
 
 						</header>
+                <br><br>
 
 							<div class="entry-content">
 								<p class="lead">{!! $article->text!!}</p>
@@ -55,7 +57,7 @@
 
 	        				                <div class="comment-meta">
 	        				                   <time class="comment-time">{{$comments->date}}</time>
-	        				                   <span class="sep">/</span><a class="reply" href="#">Reply</a>
+                                            <!--<span class="sep">/</span><a class="reply" href="#">Reply</a>-->
 	        				                </div>
 
 	        				             </div>
