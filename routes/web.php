@@ -25,10 +25,13 @@
 //реализовать авторизацию для админа
 //попробовать использовать клоне в местах с генерацией хтмл кода
 //test commit
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
 
 Route::get('/', [ 'uses' => 'BlogController@getIndex', 'as' => 'index']); // главная страница
 Route::get('/category/{name}', ['uses' => 'BlogController@getCategory', 'as' => 'category']); // статьи по категориям
-Route::get('/admin', ['uses' => 'AdminController@getIndex', 'as' => 'admin']); // админка
+Route::get('/admin', ['middleware' => 'auth', 'uses' => 'AdminController@getIndex', 'as' => 'admin']); // админка
 Route::post('/admin/delete', ['uses' => 'AdminController@postDelete', 'as' => 'delete']); // удалить статью
 Route::post('/admin/add', ['uses' => 'AdminController@postAdd', 'as' => 'add']); // добавить статью
 Route::get('/{title}', [ 'uses' => 'BlogController@getArticle', 'as' => 'article']); // статья
@@ -36,4 +39,6 @@ Route::post('/{title}', [ 'uses' => 'BlogController@postArticle', 'as' => 'addCo
 
 
 // сделать авторизацию для админа
+
+
 
