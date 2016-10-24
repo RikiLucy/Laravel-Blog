@@ -31,9 +31,12 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/', [ 'uses' => 'BlogController@getIndex', 'as' => 'index']); // главная страница
 Route::get('/category/{name}', ['uses' => 'BlogController@getCategory', 'as' => 'category']); // статьи по категориям
-Route::get('/admin', ['middleware' => 'auth', 'uses' => 'AdminController@getIndex', 'as' => 'admin']); // админка
-Route::post('/admin/delete', ['uses' => 'AdminController@postDelete', 'as' => 'delete']); // удалить статью
-Route::post('/admin/add', ['uses' => 'AdminController@postAdd', 'as' => 'add']); // добавить статью
+Route::group(['middleware' => 'admin'], function (){
+    Route::get('/admin', ['uses' => 'AdminController@getIndex', 'as' => 'admin']); // админка
+    Route::post('/admin/delete', ['uses' => 'AdminController@postDelete', 'as' => 'delete']); // удалить статью
+    Route::post('/admin/add', ['uses' => 'AdminController@postAdd', 'as' => 'add']); // добавить статью
+});
+
 Route::get('/{title}', [ 'uses' => 'BlogController@getArticle', 'as' => 'article']); // статья
 Route::post('/{title}', [ 'uses' => 'BlogController@postArticle', 'as' => 'addComment']); // добавить комментарий к статье
 
