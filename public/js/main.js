@@ -95,7 +95,6 @@
 				'<time class="comment-time" ' +
 				'>' + data.date +'</time>' +
 				'<span class="sep">/</span>' +
-				'<a class="reply" href="#">Reply</a>' +
 				'</div></div>' +
 				'<div class="comment-text" id="test"><p>' +
 				data.text + '</p></div></div>' +

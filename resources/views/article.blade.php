@@ -89,8 +89,13 @@
 							<textarea required name="text"  wrap="soft" id="cMessage" class="your_message" rows="10" cols="50" placeholder="Your message"></textarea>
 						</div>
 
+
+						<div class="g-recaptcha" data-sitekey="6Ld_ggoUAAAAAHKyPA2n_20SVxDCWTuS1udlDwac"></div>
+						<br>
 						<button type="submit" class="submit">Send</button>
+
 					</div>
+
 
 				</fieldset>
   				  </form> <!-- Form End -->

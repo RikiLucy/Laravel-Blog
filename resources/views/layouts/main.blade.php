@@ -33,6 +33,7 @@
 	<script src="{{ URL::asset('js/modernizr.js') }}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 
 
